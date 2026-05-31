@@ -58,3 +58,25 @@ def test_get_nth_fibonacci_one():
     assert result == 1
 
 
+def test_area_of_circle_negative_radius_raises():
+    """Test that a negative radius raises ValueError."""
+    with pytest.raises(ValueError, match="Radius cannot be negative"):
+        area_of_circle(-1)
+
+
+def test_get_nth_fibonacci_negative_raises():
+    """Test that a negative Fibonacci index raises ValueError."""
+    with pytest.raises(ValueError, match="n cannot be negative"):
+        get_nth_fibonacci(-5)
+
+
+def test_get_nth_fibonacci_larger_value():
+    """Test a larger Fibonacci value to cover the iterative branch."""
+    assert get_nth_fibonacci(10) == 55
+
+
+def test_area_of_circle_float_radius():
+    """Test area calculation with a float radius."""
+    assert abs(area_of_circle(2.5) - (math.pi * 2.5 ** 2)) < 1e-9
+
+
